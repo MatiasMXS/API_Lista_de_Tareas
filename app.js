@@ -16,6 +16,12 @@ app.use(cors())
 // Usar las rutas de tareas
 app.use("/api", tareasRoutes);
 
+app.get('/api/test', (req,res) =>{
+  res.send('La aplicacion está funcionando correctamente')
+});
+
+
+
 // Probar la conexión a la base de datos y arrancar el servidor
 dbconnect()
   .then(() => {
