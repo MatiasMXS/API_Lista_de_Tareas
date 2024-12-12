@@ -5,16 +5,21 @@ const express = require("express");
 const app = express();
 const dbconnect = require("./config/db"); // Importar la conexión a la base de datos
 const tareasRoutes = require("./routes/tareas"); // Importar las rutas de libros
+//cors
+const cors =require ('cors');
 
 app.use(express.json()); // Middleware para interpretar JSON
 
-// Usar las rutas de libros
+
+//CORS
+app.use(cors())
+// Usar las rutas de tareas
 app.use("/api", tareasRoutes);
 
 // Probar la conexión a la base de datos y arrancar el servidor
 dbconnect()
   .then(() => {
-    console.log("El servidor está corriendo en el puerto 3000");
+    console.log("El servidor está corriendo");
   })
   .catch((err) => {
     console.error(
